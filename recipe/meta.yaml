@@ -24,7 +24,7 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - python
-    - setuptools
+    - pip
     - numpy
   run:
     - python
