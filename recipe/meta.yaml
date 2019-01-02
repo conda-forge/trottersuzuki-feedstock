@@ -26,9 +26,11 @@ requirements:
     - python
     - pip
     - numpy
+    - llvm-openmp                    # [osx]
   run:
     - python
     - numpy
+    - llvm-openmp                    # [osx]
 
 test:
   imports:
