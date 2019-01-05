@@ -16,14 +16,13 @@ source:
 build:
   number: 1000
   skip: True  # [win]
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: "{{ PYTHON }} -m pip install --no-deps --ignore-installed ."
 
 requirements:
   build:
-    - {{ compiler('cxx') }}
-  host:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - llvm-openmp                    # [osx]
   host:
     - python
     - pip
