@@ -14,20 +14,25 @@ source:
     - osx.patch
 
 build:
-  number: 0
+  number: 1000
   skip: True  # [win]
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   build:
+    - {{ compiler('cxx') }}
+  host:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
     - python
-    - setuptools
-    - gcc
-    - numpy 1.10.*
+    - pip
+    - numpy
+    - llvm-openmp                    # [osx]
   run:
     - python
-    - libgcc
-    - numpy >=1.10
+    - numpy
+    - llvm-openmp                    # [osx]
 
 test:
   imports:
